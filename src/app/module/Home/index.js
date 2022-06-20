@@ -1,7 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
 import Form from '@rjsf/core';
-import CustomeCheckWidget from '../../component/CustomeCheckWidget';
 
 const schema = {
   title: 'A registration form',
@@ -38,7 +37,7 @@ const schema = {
     city: {
       title: 'City',
       type: 'string',
-      enum: ['Anand', 'Ahmedabad', 'Vadodra', 'Rajkot', 'Surat'],
+      enum: ['Anand', 'Ahmedabad', 'Vadodra', 'Rajkot'],
       default: 'Anand',
     },
     phoneno: {
@@ -64,7 +63,6 @@ const uiSchema = {
     'ui:focus': true,
   },
   terms_and_conditions: {
-    // 'ui:widget': CustomeCheckWidget,
     label: true,
   },
 };
@@ -81,9 +79,9 @@ function Home() {
     alert(JSON.stringify(formData, null, 2));
   };
   return (
-    <div class='container'>
-      <div class='row'>
-        <div class='col-md-6'>
+    <div className='container'>
+      <div className='row'>
+        <div className='col-md-6'>
           <Form
             schema={schema}
             uiSchema={uiSchema}
