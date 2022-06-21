@@ -11,7 +11,6 @@ const schema = {
     'lastName',
     'email',
     'age',
-    'city',
     'phoneno',
     'terms_and_conditions',
   ],
@@ -34,12 +33,6 @@ const schema = {
       type: 'number',
     },
 
-    city: {
-      title: 'City',
-      type: 'string',
-      enum: ['Anand', 'Ahmedabad', 'Vadodra', 'Rajkot'],
-      default: 'Anand',
-    },
     phoneno: {
       title: 'Phone No',
       type: 'string',
