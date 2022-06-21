@@ -1,36 +1,25 @@
 name: Build & deploy
 on:
   push:
-    branches:
-      - master
+    branches: [main]
 jobs:
-  build:
+  build-push-gcr:
+    name: Build and Deploy
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [13.x]
+
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install Packages
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build
         run: npm install
-      - name: Build project
-        run: npm run predeploy
-      - name: Upload production-ready build files
-        uses: actions/upload-artifact@v2
-        with:
-          name: production-files
-          path: ./build
-      - name: Download artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: production-files
-          path: ./build
-      - name: deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+
+      - name: Test
+        run: npm run test
+
+      - name: Deploy
+        run: |
+          git config --global user.name 'Parth'
+          git config --global user.email 'parthkumar@simformsolutions.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}    
+          npm run deploy
