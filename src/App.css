@@ -9,3 +9,28 @@
 .field-radio-group{
   flex-direction: row!important;
 }
+
+.form-control:disabled{
+  background-color:white!important;
+}
+.field-string {
+  margin-top: 1rem ;
+}
+.field-undefined{
+  margin-top: 1rem ;
+}
+
+.btn{
+  margin-top: 1rem;
+}
+
+.required{
+  color: #ae1716
+}
+
+.feedbacl-form{
+  margin-top:3rem;
+}
+.grade-text{
+  color:#51a7f9;
+}

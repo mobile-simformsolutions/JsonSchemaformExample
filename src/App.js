@@ -1,10 +1,10 @@
 import './App.css';
-import Home from './app/module/Home';
+import FormData from './app/module/Form';
 
 function App() {
   return (
     <div className='App'>
-      <Home />
+      <FormData />
     </div>
   );
 }
